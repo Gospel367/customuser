@@ -4,7 +4,7 @@ from .models import *
 
 
 class CustomuserAdmin(UserAdmin):
-    list_display = ('username', 'email', 'phone_number', 'last_login')
+    list_display = ('username', 'email', 'phone_number', 'last_login', 'is_active')
 
     fieldsets = ( 
                  ( None, { 'fields': ('username', 'password') }),
@@ -34,4 +34,8 @@ class CustomuserAdmin(UserAdmin):
                  )
 
 
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('full_name', 'user_email',)
+
 admin.site.register(Customuser, CustomuserAdmin)
+admin.site.register(Profile, ProfileAdmin)

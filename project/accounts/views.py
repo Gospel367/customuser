@@ -72,6 +72,8 @@ class Register(FormView):
             messages.success(request, ('Please ' + user.username +
                              ' Confirm your email to complete registration'))
             return redirect('register')
+        elif not form.is_valid():
+            messages.success(request, ('Invalid Inputs. Either Email or Username already exists'))
         return render(request, self.template_name, {'form': form})
 
     '''def get_success_url(self):
